@@ -1,0 +1,12 @@
+# Load Ruby RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Default Editor
+export EDITOR=vim
+
+# Add path for repos
+export PROJECT_BASE_PATH="$HOME/projects/"
+
+# Include local and composer bin on path
+export PATH="$HOME/bin:$HOME/.composer/vendor/bin:$PATH"
