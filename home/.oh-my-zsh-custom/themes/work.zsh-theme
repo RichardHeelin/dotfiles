@@ -7,7 +7,10 @@ function parse_git_branch {
 
     `git update-index --really-refresh 2>&1 1>/dev/null`
 
-    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    ref=$(git symbolic-ref HEAD 2>/dev/null) || \
+    ref=$(echo -n "%{$fg_bold[grey]%}" && git describe --exact-match --abbrev=0 --tags 2>/dev/null) || \
+    ref=$(echo -n "%{$fg_bold[grey]%}" && git rev-parse --short HEAD 2>/dev/null)
+    ref=${ref#refs/heads/}
 
     if ! git diff-files --quiet 2>/dev/null; then
         background="$bg[red]"
@@ -17,7 +20,7 @@ function parse_git_branch {
         background="$bg[green]"
     fi
 
-    case "$branch" in
+    case "$ref" in
         master)
             color="$fg_bold[green]" ;;
         develop)
@@ -28,7 +31,7 @@ function parse_git_branch {
             color="$fg_bold[default]" ;;
     esac
 
-    echo -n " %{$fg_bold[default]%}%{$background%}[%{$color%}$branch%{$fg_bold[default]%}]%{$reset_color%}"
+    echo -n " %{$fg_bold[default]%}%{$background%}[%{$color%}$ref%{$fg_bold[default]%}]%{$reset_color%}"
 }
 
 PROMPT='%{$fg_bold[green]%}%D{%R}%{$reset_color%} %{$fg_bold[blue]%}%1~%{$reset_color%}$(parse_git_branch)%(!:#:$) '
