@@ -85,3 +85,5 @@ fi
 
 # Load Base RC File
 . ~/.rc
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
