@@ -45,9 +45,7 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ssh-agent archie docker gitfast composer sudo zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
+plugins=(ssh-agent docker gitfast composer sudo zsh-syntax-highlighting)
 
 # User configuration
 
@@ -91,3 +89,6 @@ fi
 
 # Load Base RC File
 source $HOME/.rc
+
+# Load OhMyZsh
+source $ZSH/oh-my-zsh.sh
