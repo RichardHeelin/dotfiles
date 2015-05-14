@@ -79,11 +79,15 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-if [ -f ~/.zsh_aliases ]; then
-    . ~/.zsh_aliases
+if [ -f $HOME/.zsh_aliases ]; then
+    . $HOME/.zsh_aliases
+fi
+
+if [ -d $HOME/.zshrc.d ]; then
+    for file in $HOME/.zshrc.d/*.zsh(N); do
+        source $file
+    done
 fi
 
 # Load Base RC File
-. ~/.rc
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source $HOME/.rc
