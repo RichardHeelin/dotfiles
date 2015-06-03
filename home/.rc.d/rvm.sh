@@ -11,12 +11,3 @@ if [[ -d "$HOME/.rvm/bin" ]]; then
 elif [[ -d "/usr/local/rvm/bin" ]]; then
     PATH=$PATH:/usr/local/rvm/bin
 fi
-
-# Default Editor
-export EDITOR=vim
-
-# Add path for repos
-export PROJECT_BASE_PATH="$HOME/projects/"
-
-# Include local and composer bin on path
-export PATH="$HOME/bin:$HOME/.composer/vendor/bin:$PATH"

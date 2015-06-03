@@ -1,3 +1,5 @@
 *~
 home/.oh-my-zsh-custom/
+home/.bashrc.d
+home/.rc.d/
 home/.zshrc.d/

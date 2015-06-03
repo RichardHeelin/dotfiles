@@ -124,14 +124,23 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
+
+# Load all files from .bashrc.d directory
+if [ -d $HOME/.bashrc.d ]; then
+    for file in $HOME/.bashrc.d/*.bash; do
+        . $file
+    done
 fi
 
-# Run startup scripts
-if [ -f ~/.bash_startup ]; then
-    . ~/.bash_startup
+# Load all files from .rc.d directory
+if [ -d $HOME/.rc.d ]; then
+    for file in $HOME/.rc.d/*.sh; do
+        . $file
+    done
 fi
+
+[ $changed ] && shopt -u nullglob; unset changed
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -139,8 +148,3 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-# Load Base RC File
-. ~/.rc
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -77,18 +77,19 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-if [ -f $HOME/.zsh_aliases ]; then
-    . $HOME/.zsh_aliases
-fi
-
+# Load all files from .zshrc.d directory
 if [ -d $HOME/.zshrc.d ]; then
     for file in $HOME/.zshrc.d/*.zsh(N); do
         source $file
     done
 fi
 
-# Load Base RC File
-source $HOME/.rc
+# Load all files from .rc.d directory
+if [ -d $HOME/.rc.d ]; then
+    for file in $HOME/.rc.d/*.sh(N); do
+        source $file
+    done
+fi
 
 # Load OhMyZsh
 source $ZSH/oh-my-zsh.sh
