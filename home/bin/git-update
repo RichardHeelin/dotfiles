@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+ref=$(git symbolic-ref HEAD 2>/dev/null) || \
+ref=$(git describe --exact-match --abbrev=0 --tags 2>/dev/null) || \
+ref=$(git rev-parse --short HEAD 2>/dev/null)
+ref=${ref#refs/heads/}
+git fetch && git pull origin "$ref"
