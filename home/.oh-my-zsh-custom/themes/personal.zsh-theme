@@ -5,6 +5,11 @@ function parse_git_branch {
         return
     fi
 
+    isInsideWorkingTree=$(git rev-parse --is-inside-work-tree 2>/dev/null)
+    if [ "${isInsideWorkingTree}" != "true" ]; then
+        return
+    fi
+
     `git update-index --really-refresh 2>&1 1>/dev/null`
 
     ref=$(git symbolic-ref HEAD 2>/dev/null) || \
