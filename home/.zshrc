@@ -77,6 +77,9 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Define an array which rc files can append functions to which will be called once fully loaded
+delay=()
+
 # Load all files from .zshrc.d directory
 if [ -d $HOME/.zshrc.d ]; then
     for file in $HOME/.zshrc.d/*.zsh(N); do
@@ -93,3 +96,8 @@ fi
 
 # Load OhMyZsh
 source $ZSH/oh-my-zsh.sh
+
+# Load all delayed functions
+for cmd in $delay; do
+    eval $cmd
+done
