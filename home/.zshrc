@@ -77,6 +77,9 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Load profile aliases
+grep -Rh 'alias' /etc/profile.d/ | source /dev/stdin
+
 # Define an array which rc files can append functions to which will be called once fully loaded
 delay=()
 
