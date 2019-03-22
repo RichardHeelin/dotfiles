@@ -4,3 +4,5 @@ if [ "$DISPLAY" ]; then
         pactl upload-sample /usr/share/sounds/gnome/default/alerts/glass.ogg bell.ogg
     fi
 fi
+
+alias bell="tput bel"
