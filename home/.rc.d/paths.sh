@@ -12,3 +12,8 @@ fi
 if [ ! -z "$GOPATH" ] && [ -d "$GOPATH/bin" ]; then
     export PATH="$GOPATH/bin:$PATH"
 fi
+
+# Include dotnet tools on path
+if [ ! -z "$HOME/.dotnet/tools" ]; then
+    export PATH="$HOME/.dotnet/tools:$PATH"
+fi
