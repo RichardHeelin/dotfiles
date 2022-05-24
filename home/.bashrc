@@ -126,16 +126,16 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 shopt -u | grep -q nullglob && changed=true && shopt -s nullglob
 
-# Load all files from .bashrc.d directory
-if [ -d $HOME/.bashrc.d ]; then
-    for file in $HOME/.bashrc.d/*.bash; do
+# Load all files from .rc.d directory
+if [ -d $HOME/.rc.d ]; then
+    for file in $HOME/.rc.d/*.sh; do
         . $file
     done
 fi
 
-# Load all files from .rc.d directory
-if [ -d $HOME/.rc.d ]; then
-    for file in $HOME/.rc.d/*.sh; do
+# Load all files from .bashrc.d directory
+if [ -d $HOME/.bashrc.d ]; then
+    for file in $HOME/.bashrc.d/*.bash; do
         . $file
     done
 fi
@@ -148,7 +148,3 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

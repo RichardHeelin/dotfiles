@@ -83,16 +83,16 @@ grep -Rh 'alias' /etc/profile.d/ | source /dev/stdin
 # Define an array which rc files can append functions to which will be called once fully loaded
 delay=()
 
-# Load all files from .zshrc.d directory
-if [ -d $HOME/.zshrc.d ]; then
-    for file in $HOME/.zshrc.d/*.zsh(N); do
+# Load all files from .rc.d directory
+if [ -d $HOME/.rc.d ]; then
+    for file in $HOME/.rc.d/*.sh(N); do
         source $file
     done
 fi
 
-# Load all files from .rc.d directory
-if [ -d $HOME/.rc.d ]; then
-    for file in $HOME/.rc.d/*.sh(N); do
+# Load all files from .zshrc.d directory
+if [ -d $HOME/.zshrc.d ]; then
+    for file in $HOME/.zshrc.d/*.zsh(N); do
         source $file
     done
 fi
