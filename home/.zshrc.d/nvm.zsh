@@ -1,2 +1,2 @@
-export NVM_AUTOLOAD=1
+zstyle ':omz:plugins:nvm' autoload true
 plugins+=("nvm")
